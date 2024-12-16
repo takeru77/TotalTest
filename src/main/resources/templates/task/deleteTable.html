@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>タスク一覧表（削除）</title>
+</head>
+<body>
+	<form th:action="@{/deletetable/delete}" method="post" style="margin-bottom: 3rem;">
+		<table border="1">
+			<thead>
+				<th>ID</th>
+				<th>タスク</th>
+				<th>削除</th>
+			</thead>
+			<tbody>
+				<tr th:each="task : ${tasks}">
+				<td th:text="${task.id}">ID</td>
+				<td th:text="${task.task}">タスク</td>
+				<td><input type="checkbox" name="sendCheckNumber[]" th:value="${task.id}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="削除">
+	</form>
+	<a th:href="@{/}">トップに戻る</a>
+</body>
+</html>
