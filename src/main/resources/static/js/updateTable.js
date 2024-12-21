@@ -6,6 +6,10 @@ document.addEventListener('click', function(event) {
 			
 	// tagNameは大文字を返す
 	if (clickedParentElement.tagName === 'TD') {
+		// アンカータグがクリックされた場合、デフォルトの動きを阻止
+		if (clickedElement.tagName === 'A') {
+			event.preventDefault();
+		}
 		const previousSibling = clickedParentElement.previousElementSibling;
 		console.log(previousSibling);
 		const previousSibling2 = previousSibling.previousElementSibling;

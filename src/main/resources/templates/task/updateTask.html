@@ -5,7 +5,7 @@
 	<title>タスク更新</title>
 </head>
 <body>
-	<form th:action="@{/updatetable/updatetask/update}" method="post" th:object="${taskForm}">
+	<form th:action="@{/TotalTest/updatetable/updatetask/update}" method="post" th:object="${taskForm}">
 		タスク<input type="text" th:field="*{registerString}">
 		<input type="hidden" name="submitTaskId" th:value="${fromId}">
 		<input type="submit" value="登録">
@@ -13,6 +13,6 @@
 			<li th:each="err:${#fields.errors('*')}" th:text="${err}"></li>
 		</ul>
 	</form>
-	<a th:href="@{/}">トップに戻る</a>
+	<a th:href="@{/TotalTest/}">トップに戻る</a>
 </body>
 </html>

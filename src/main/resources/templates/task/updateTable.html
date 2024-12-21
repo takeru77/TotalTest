@@ -5,7 +5,7 @@
 	<title>タスク一覧表（更新）</title>
 </head>
 <body>
-	<form th:action="@{/updatetable/updatetask}" method="get" id="submitTask" style="margin-bottom: 3rem;">
+	<form th:action="@{/TotalTest/updatetable/updatetask}" method="get" id="submitTask" style="margin-bottom: 3rem;">
 		<table border="1">
 			<thead>
 				<th>ID</th>
@@ -16,13 +16,13 @@
 				<tr th:each="task : ${tasks}">
 					<td th:text="${task.id}" id="purposeId">ID</td>
 					<td th:text="${task.task}">タスク</td>
-					<td><a href="#" onclick="submitJs()">更新</a></td>
+					<td><a href="#">更新</a></td>
 				</tr>
 				<input type="hidden" id="submitTaskId" name="submitTaskId">
 			</tbody>
 		</table>
 	</form>
-	<a th:href="@{/}">トップに戻る</a>
-	<script th:src="@{js/updateTable.js}"></script>
+	<a th:href="@{/TotalTest/}">トップに戻る</a>
+	<script th:src="@{/js/updateTable.js}"></script>
 </body>
 </html>

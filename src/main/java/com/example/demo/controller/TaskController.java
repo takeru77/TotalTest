@@ -23,23 +23,23 @@ public class TaskController {
 	private final TaskMapper taskMapper;
 	
 	// メニュー画面を表示
-	@GetMapping("/")
+	@GetMapping("/TotalTest/")
 	public String showIndex() {
 		return "task/index";
 	}
 	
-	@GetMapping("/list")
+	@GetMapping("/TotalTest/list")
 	public String showTable(Model model) {
 		model.addAttribute("tasks", taskMapper.getAllTasks());
 		return "task/list";
 	}
 	
-	@GetMapping("/registertable")
+	@GetMapping("/TotalTest/registertable")
 	public String showRegisterTable(@ModelAttribute("taskForm") TaskForm taskForm) {
 		return "task/registerTable";
 	}
 	
-	@PostMapping("/register")
+	@PostMapping("/TotalTest/register")
 	public String register(@Validated TaskForm form,
 		BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
@@ -48,16 +48,16 @@ public class TaskController {
 		Task task = new Task();
 		task.setTask(form.getRegisterString());
 		taskMapper.insertTask(task);
-		return "redirect:/";
+		return "redirect:/TotalTest/";
 	}
 	
-	@GetMapping("/deletetable")
+	@GetMapping("/TotalTest/deletetable")
 	public String showDeleteTable(Model model) {
 		model.addAttribute("tasks", taskMapper.getAllTasks());
 		return "task/deleteTable";
 	}
 	
-	@PostMapping("/deletetable/delete")
+	@PostMapping("/TotalTest/deletetable/delete")
 	public RedirectView deleteRows(@RequestParam(name = "sendCheckNumber[]") String[] sendCheckNumber) {
 		int count = sendCheckNumber.length;
 		
@@ -80,13 +80,13 @@ public class TaskController {
 		return new RedirectView("/TotalTest/");
 	}
 	
-	@GetMapping("/updatetable")
+	@GetMapping("/TotalTest/updatetable")
 	public String showUpdateTable(@ModelAttribute("taskForm") TaskForm taskForm, Model model) {
 		model.addAttribute("tasks", taskMapper.getAllTasks());
 		return "task/updateTable";
 	}
 	
-	@GetMapping("/updatetable/updatetask")
+	@GetMapping("/TotalTest/updatetable/updatetask")
 	public String showUpdateTask(@RequestParam(name = "submitTaskId") String id, @ModelAttribute("taskForm") TaskForm taskForm, Model model) {
 		System.out.println("アップデートメソッド");
 		System.out.println(id);
@@ -94,7 +94,7 @@ public class TaskController {
 		return "task/updateTask";
 	}
 	
-	@PostMapping("/updatetable/updatetask/update")
+	@PostMapping("/TotalTest/updatetable/updatetask/update")
 	public String updateRows(@Validated TaskForm form, @RequestParam(name = "submitTaskId") String id, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return "task/updateTask";
@@ -103,6 +103,6 @@ public class TaskController {
 		form.setId(idNumber);
 		
 		taskMapper.updateTask(form);
-		return "redirect:/";
+		return "redirect:/TotalTest/";
 	}
 }
