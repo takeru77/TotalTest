@@ -74,7 +74,10 @@ public class TaskController {
 			taskMapper.deleteTaskById(checkNumber[zero]);
 			++zero;
 		}
-		return new RedirectView("/");
+		//
+		//
+		// 本番環境ではTotalTestにリダイレクトするようにする
+		return new RedirectView("/TotalTest/");
 	}
 	
 	@GetMapping("/updatetable")
